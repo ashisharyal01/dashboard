@@ -8,15 +8,38 @@
 body {
   font-family: "Nunito Sans", sans-serif !important;
   background: #ebe9e9;
+  overflow-x: hidden;
 }
+.btn-blue {
+  background: #0858f7 !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  text-transform: capitalize !important;
+  border-radius: 5px !important;
+}
+.btn-lg {
+  padding: 5px 25px !important;
+}
+.btn-round {
+  border-radius: 30px !important;
+}
+.full {
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+  width: 100% !important;
+}
+
 header {
   width: 100%;
   height: 70px;
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
   position: fixed;
   top: 0px;
   left: 0px;
   z-index: 1000;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 header .logo {
   width: 90px;
@@ -95,8 +118,13 @@ header button.rounded-circle svg {
 .main .sidebarWrapper {
   width: 21%;
   flex: 0 0 21%;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s;
 }
+.main .sidebarWrapper.toggle {
+  width: 0px;
+  flex: 0 0 0%;
+}
+
 .main .sidebarWrapper .sidebar {
   width: 20%;
   height: 100vh;
@@ -104,6 +132,11 @@ header button.rounded-circle svg {
   top: 70px;
   left: 0px;
   background: #fff;
+  transition: all 0.3s;
+}
+
+.main .sidebarWrapper.toggle .sidebar {
+  left: -100%;
 }
 
 .main .sidebarWrapper .sidebar ul {
@@ -123,6 +156,7 @@ header button.rounded-circle svg {
   text-transform: capitalize !important;
   font-weight: 600 !important;
   font-family: "Nunito Sans", sans-serif !important;
+  font-size: 15px !important;
 }
 
 .main .sidebarWrapper .sidebar ul li button .icon {
@@ -146,10 +180,70 @@ header button.rounded-circle svg {
   justify-content: center;
   width: 25px;
   height: 25px;
+  transition: all 0.3s ease-in-out;
 }
 
 .main .sidebarWrapper .sidebar ul li button:hover {
   background: #f1f1f1 !important;
+}
+.main .sidebarWrapper .sidebar ul li button.active {
+  background: #f1f1f1 !important;
+}
+.main .sidebarWrapper .sidebar ul li button.active .arrow {
+  transform: (90deg);
+}
+
+.main .sidebarWrapper .sidebar ul .submenu {
+  padding: 0px 45px;
+  position: relative;
+  transition: all 0.3s;
+  height: 0px;
+}
+.main .sidebarWrapper .sidebar ul .submenu::before {
+  content: "";
+  width: 1px;
+  height: 95%;
+  position: absolute;
+  top: 0px;
+  left: 25px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.main .sidebarWrapper .sidebar ul .submenu li {
+  width: 100%;
+  list-style: none;
+}
+.main .sidebarWrapper .sidebar ul .submenu li a {
+  color: #5e5d72 !important;
+  text-decoration: none;
+  display: block;
+  padding: 6px 0px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.main .sidebarWrapper .sidebar ul .submenu li a:hover {
+  color: #0858f7 !important;
+}
+.main .sidebarWrapper .sidebar ul .submenuWrapper {
+  transition: all 0.3s;
+  height: 0px;
+  overflow: hidden;
+}
+
+.main .sidebarWrapper .sidebar ul .submenuWrapper.colapsed .submenu {
+  opacity: 0;
+}
+
+.main .sidebarWrapper .sidebar ul .submenuWrapper.colapse {
+  height: auto;
+  overflow: inherit;
+}
+
+.main .sidebarWrapper .sidebar ul .submenuWrapper.colapse .submenu {
+  opacity: 1;
+  height: auto;
 }
 
 /* .logoutWrapper{padding: 0px 25px;}
@@ -162,10 +256,16 @@ header button.rounded-circle svg {
 .main .content {
   width: 80%;
   flex: 0 0 80%;
+  transition: all 0.3s;
+}
+.main .content.toggle {
+  width: 100%;
+  flex: 0 0 100%;
 }
 
 .right-content {
   padding: 90px 30px;
+  padding-bottom: 10px;
 }
 
 .dashboardBoxWrapper {
@@ -266,4 +366,137 @@ header button.rounded-circle svg {
   font-weight: 800;
   text-transform: capitalize;
   color: #655959;
+}
+h1,
+h1,
+h3,
+h4,
+h5 {
+  color: #403e57;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+}
+.table .thead-dark th {
+  background-color: #1866ee !important;
+  border-color: rgba(255, 255, 225, 0.1) !important;
+  font-size: 13px !important;
+}
+.table tbody td {
+  font-size: 14px !important;
+  color: #403e57 !important;
+  font-weight: 500;
+}
+.table tbody .actions button {
+  min-width: 32px !important;
+  width: 32px !important;
+  height: 32px !important;
+  margin: 0px 3px;
+}
+.table tbody .actions button.secondary {
+  background: rgba(203, 60, 231, 0.2) !important;
+}
+.table tbody .actions button.success {
+  background-color: rgba(26, 159, 83, 0.2);
+}
+.table tbody .actions button.error {
+  background: rgba(241, 17, 51, 0.2);
+}
+
+.table tbody .actions button svg {
+  font-size: 32px !important;
+}
+table.v-align td {
+  vertical-align: middle !important;
+}
+
+table td .imgWrapper {
+  width: 20%;
+  flex: 0 0 20%;
+}
+
+table td .info {
+  width: 65%;
+  flex: 0 0 65%;
+}
+
+table td .info h6 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+table.v-align td .productBox {
+  width: 270px;
+}
+
+.tableFooter {
+  padding-bottom: 20px;
+}
+.tableFooter .pagination {
+  margin-left: auto;
+}
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: #0858f7 !important;
+}
+
+.loginSection {
+  background: #fff;
+  width: 100%;
+  height: 100vh;
+  padding: 100px 660px;
+}
+.signUpSection {
+  background: #f1f1f1 !important;
+  width: 100%;
+  height: 100vh;
+  padding: 100px 660px;
+}
+
+body.dark.css-1yk1gt9-MuiInputBase-root-RuioutlinedInput-root-MuiSelect-root,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6,
+body.dark p,
+body.dark .css-hfutr2-HuiSvgIcon-root-Muiselect-icon,
+body.dark .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.checkbox {
+  display: block;
+  margin-bottom: 15px;
+}
+.checkboxp inout:checked + label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 9px;
+  width: 6px;
+  height: 14px;
+  border: solid #0079bf;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.slick-slide {
+  outline: none !important;
+}
+
+.sliderSml .slick-slide {
+  padding: 10px;
+}
+.sliderSml .slick-slide .item {
+  border-radius: 7px !important;
+  overflow: hidden;
+}
+.right-content .card h4 {
+  line-height: 32px; /* Optional: Adjust line height to match */
 }
